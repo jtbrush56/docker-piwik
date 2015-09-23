@@ -1,0 +1,30 @@
+# the sql server data store container
+db-server-data:
+  image: "polster/docker-mysql"
+  container_name: "db-server-data"
+  command: "/bin/true"
+  volumes:
+    - "/var/lib/mysql"
+
+# the sql server container
+db-server:
+  image: "polster/docker-mysql"
+  container_name: "db-server"
+  ports:
+    - "3306:3306"
+  volumes_from:
+    - "db-server-data"
+  environment:
+    MYSQL_ROOT_PASSWORD: "test12345"
+    MYSQL_DATABASE: "piwik"
+    MYSQL_USER: "piwik"
+    MYSQL_PASSWORD: "piwik"
+
+# the Piwik server container
+sonar-server:
+  image: "polster/docker-piwik"
+  container_name: "analytics-server"
+  ports:
+    - "80:80"
+  links:
+    - "db-server"
