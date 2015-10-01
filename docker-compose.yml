@@ -21,7 +21,7 @@ db-server:
     MYSQL_PASSWORD: "piwik"
 
 # the Piwik server container
-sonar-server:
+piwik-server:
   image: "polster/docker-piwik"
   container_name: "analytics-server"
   ports:
