@@ -1,8 +1,8 @@
 FROM centos:centos7
 
-MAINTAINER simon.dietschi@bluecare.ch
+MAINTAINER jtbrush56@gmail.com
 
-ENV PIWIK_VERSION 2.14.3
+ENV PIWIK_VERSION 2.17.1
 
 # install dependencies
 RUN yum -y update && yum clean all \
